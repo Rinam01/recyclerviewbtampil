@@ -1,6 +1,8 @@
 package com.rinam.recyclerviewb;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         _recyclerView1 = findViewById(R.id.recyclerView1);
+
         _txtMahasiswaCount = findViewById(R.id.txtMahasiswaCount);
 
         initAddButton();
@@ -68,7 +71,17 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-    private void initAddButton() {
-    }
+    private void initAddButton()
+    {
+        _addButton = findViewById(R.id.addButton);
 
+        _addButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(getApplicationContext(), AddMahasiswaActivity.class);
+                startActivity(intent);
+                loadRecyclerView();
+            }
+        });
+    }
 }
